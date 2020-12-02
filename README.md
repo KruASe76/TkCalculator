@@ -7,5 +7,3 @@ It's so cool that it can execute strings like this: 8+2x9-4/6!+√9^4+π/2 and e
 (if you want to copy this string to the calculator, don't forget to replace 'x' with '*')
 
 P.S. Of course, there are a few bugs that I was too lazy to fix like: 2^4^3=4096 (he sees it like (2^4)^3=16^3)
-
-P.P.S To activate Simple Mode comment strings 200-203 and 209
