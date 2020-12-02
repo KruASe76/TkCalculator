@@ -3,7 +3,7 @@ import math
 
 window=Tk()
 window.geometry('252x420')
-window.title('Колькулятар')
+window.title('Кулькулятар')
 window.resizable(False, False)
 
 def ins(symb):
