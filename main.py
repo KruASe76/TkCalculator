@@ -16,7 +16,6 @@ def ins(symb):
 
 def calc():
     do=ent.get()
-    print(do)
     try:
         if 'π' in do:
             if do.index('π')!=0:
@@ -65,7 +64,6 @@ def calc():
         
         for i in range(do.count('√')):
             place=do.index('√')
-            print(do[place-1])
             if place!=0:
                 if do[place-1]!='+' and do[place-1]!='-' and do[place-1]!='*' and do[place-1]!='/':
                     a=int('')
