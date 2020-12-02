@@ -8,7 +8,11 @@ window.resizable(False, False)
 
 def ins(symb):
     if symb=='':
-        ent.delete(len(ent.get())-1)
+        if len(ent.get())!=0:
+            if ent.get()[-1]=='R':
+                ent.delete(0, END)
+            else:
+                ent.delete(len(ent.get())-1)
     elif symb==' ':
         ent.delete(0, END)
     else:
