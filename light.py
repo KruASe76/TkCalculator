@@ -29,15 +29,15 @@ def calc():
                 place=do.index('/')
                 place1, place2=place, place
                 num1, num2='', ''
-                while do[place1-1].isdigit() or do[place1-1]=='.':
+                while do[place1-1].isdigit() or do[place1-1]=='.' or do[place1-1]=='-':
                     num1=do[place1-1]+num1
                     place1-=1
-                    if place1-1<0:
+                    if place1-1<0 or do[place1]=='-':
                         break
-                while do[place2+1].isdigit() or do[place2+1]=='.':
+                while do[place2+1].isdigit() or do[place2+1]=='.' or do[place2+1]=='-':
                     num2=num2+do[place2+1]
                     place2+=1
-                    if place2+1>=len(do):
+                    if place2+1>=len(do) or do[place2+1]=='-':
                         break
                 ans=float(num1)/float(num2)
                 do=do[:place-len(num1)]+str(ans)+do[place+len(num2)+1:]
@@ -45,15 +45,15 @@ def calc():
                 place=do.index('*')
                 place1, place2=place, place
                 num1, num2='', ''
-                while do[place1-1].isdigit() or do[place1-1]=='.':
+                while do[place1-1].isdigit() or do[place1-1]=='.' or do[place1-1]=='-':
                     num1=do[place1-1]+num1
                     place1-=1
-                    if place1-1<0:
+                    if place1-1<0 or do[place1]=='-':
                         break
-                while do[place2+1].isdigit() or do[place2+1]=='.':
+                while do[place2+1].isdigit() or do[place2+1]=='.' or do[place2+1]=='-':
                     num2=num2+do[place2+1]
                     place2+=1
-                    if place2+1>=len(do):
+                    if place2+1>=len(do) or do[place2+1]=='-':
                         break
                 ans=float(num1)*float(num2)
                 do=do[:place-len(num1)]+str(ans)+do[place+len(num2)+1:]
@@ -63,15 +63,15 @@ def calc():
                 place=max([p1, p2])
                 place1, place2=place, place
                 num1, num2='', ''
-                while do[place1-1].isdigit() or do[place1-1]=='.':
+                while do[place1-1].isdigit() or do[place1-1]=='.' or do[place1-1]=='-':
                     num1=do[place1-1]+num1
                     place1-=1
-                    if place1-1<0:
+                    if place1-1<0 or do[place1]=='-':
                         break
-                while do[place2+1].isdigit() or do[place2+1]=='.':
+                while do[place2+1].isdigit() or do[place2+1]=='.' or do[place2+1]=='-':
                     num2=num2+do[place2+1]
                     place2+=1
-                    if place2+1>=len(do):
+                    if place2+1>=len(do) or do[place2+1]=='-':
                         break
                 if place==p1:
                     ans=float(num1)*float(num2)
@@ -79,15 +79,16 @@ def calc():
                     ans=float(num1)/float(num2)
                 do=do[:place-len(num1)]+str(ans)+do[place+len(num2)+1:]
         
-        do=do.replace('-', '+-')
-        if do[0]=='+':
-            do=do[1:]
-        do_list=do.split('+')
-        for i in range(len(do_list)):
-            do_list[i]=float(do_list[i])
-        do=math.fsum(do_list)
-        if do%1==0:
-            do=int(do)
+        if 'e' not in do:
+            do=do.replace('-', '+-')
+            if do[0]=='+':
+                do=do[1:]
+            do_list=do.split('+')
+            for i in range(len(do_list)):
+                do_list[i]=float(do_list[i])
+            do=math.fsum(do_list)
+            if do%1==0:
+                do=int(do)
         do=str(do).replace('.', ',')
 
 
