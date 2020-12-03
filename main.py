@@ -152,8 +152,9 @@ def calc():
         ins(' ')
         ins(do)
     except:
-        ins(' ')
-        ins('ERROR')
+        if do!='':
+            ins(' ')
+            ins('ERROR')
 
 
 ent=Entry(window, width=42)
