@@ -21,7 +21,7 @@ def ins(symb):
 def calc():
     do=ent.get()
     try:
-        if do[0]=='+' or do[0]=='-' or do[0]=='*' or do[0]=='/':
+        if do[0]=='^' or do[0]=='!' or do[0]=='+' or do[0]=='*' or do[0]=='/' or do[0]=='.':
             a=int('')
         
         for i in range(do.count('*')+do.count('/')):
