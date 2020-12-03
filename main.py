@@ -24,21 +24,21 @@ def calc():
         if 'π' in do:
             if do.index('π')!=0:
                 if do[do.index('π')-1].isdigit():
-                    a=int('')
+                    a=1/0
             if do.index('π')!=len(do):
                 if do[do.index('π')+1].isdigit():
-                    a=int('')
+                    a=1/0
             do=do.replace('π', '3.1415926535')
         if ',' in do:
             do=do.replace(',', '.')
         if do[0]=='^' or do[0]=='!' or do[0]=='+' or do[0]=='*' or do[0]=='/' or do[0]=='.':
-            a=int('')
+            a=1/0
 
         for i in range(do.count('!')):
             place=do.index('!')
             if place!=len(do):
                 if do[place+1]!='+' and do[place+1]!='-' and do[place+1]!='*' and do[place+1]!='/' and do[place+1]!='^':
-                    a=int('')
+                    a=1/0
             place1=place
             num=''
             while do[place1-1].isdigit() or do[place1-1]=='.':
@@ -48,6 +48,21 @@ def calc():
                     break
             ans=math.factorial(float(num))
             do=do[:place-len(num)]+str(ans)+do[place+1:]
+        
+        for i in range(do.count('√')):
+            place=do.index('√')
+            if place!=0:
+                if do[place-1]!='+' and do[place-1]!='-' and do[place-1]!='*' and do[place-1]!='/':
+                    a=1/0
+            place1=place
+            num=''
+            while do[place1+1].isdigit() or do[place1+1]=='.':
+                num=num+do[place1+1]
+                place1+=1
+                if place1+1>=len(do):
+                    break
+            ans=math.sqrt(float(num))
+            do=do[:place]+str(ans)+do[place+len(num)+1:]
         
         for i in range(do.count('^')):
             place=do.index('^')
@@ -65,21 +80,6 @@ def calc():
                     break
             ans=math.pow(float(num1), float(num2))
             do=do[:place-len(num1)]+str(ans)+do[place+len(num2)+1:]
-        
-        for i in range(do.count('√')):
-            place=do.index('√')
-            if place!=0:
-                if do[place-1]!='+' and do[place-1]!='-' and do[place-1]!='*' and do[place-1]!='/':
-                    a=int('')
-            place1=place
-            num=''
-            while do[place1+1].isdigit() or do[place1+1]=='.':
-                num=num+do[place1+1]
-                place1+=1
-                if place1+1>=len(do):
-                    break
-            ans=math.sqrt(float(num))
-            do=do[:place]+str(ans)+do[place+len(num)+1:]
         
         for i in range(do.count('*')+do.count('/')):
             if do.count('*')==0:
