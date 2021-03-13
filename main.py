@@ -36,7 +36,7 @@ def calc():
 
         for i in range(do.count('!')):
             place=do.index('!')
-            if place!=len(do):
+            if place!=len(do)-1:
                 if do[place+1]!='+' and do[place+1]!='-' and do[place+1]!='*' and do[place+1]!='/' and do[place+1]!='^':
                     a=1/0
             place1=place
@@ -46,7 +46,7 @@ def calc():
                 place1-=1
                 if place1-1<0:
                     break
-            ans=math.factorial(float(num))
+            ans=math.factorial(int(num))
             do=do[:place-len(num)]+str(ans)+do[place+1:]
         
         for i in range(do.count('√')):
